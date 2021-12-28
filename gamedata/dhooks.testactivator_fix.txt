@@ -1,0 +1,43 @@
+"Games"
+{
+	"#default"
+	{
+		"Functions"
+		{
+			"AcceptInput"
+			{
+				"offset" "AcceptInput"
+				"return" "bool"
+
+				"arguments"
+				{
+					"name"
+					{
+						"type" "charptr"
+					}
+
+					"activator"
+					{
+						"type" "cbaseentity"
+					}
+
+					"caller"
+					{
+						"type" "cbaseentity"
+					}
+
+					"value"
+					{
+						"type" "object"
+						"size" "20"
+					}
+
+					"outputId"
+					{
+						"type" "int"
+					}
+				}
+			}
+		}
+	}
+}
