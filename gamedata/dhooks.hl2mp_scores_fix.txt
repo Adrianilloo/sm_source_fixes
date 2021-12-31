@@ -1,0 +1,53 @@
+"Games"
+{
+	"#default"
+	{
+		"Offsets"
+		{
+			"ChangeTeam"
+			{
+				"windows"	"91"
+				"linux"		"92"
+			}
+
+			"HandleCommand_JoinTeam"
+			{
+				"windows"	"463"
+				"linux"		"464"
+			}
+		}
+
+		"Functions"
+		{
+			"ChangeTeam"
+			{
+				"offset"	"ChangeTeam"
+				"this"		"entity"
+				"return"	"void"
+
+				"arguments"
+				{
+					"team"
+					{
+						"type" "int"
+					}
+				}
+			}
+
+			"HandleCommand_JoinTeam"
+			{
+				"offset"	"HandleCommand_JoinTeam"
+				"this"		"entity"
+				"return"	"bool"
+
+				"arguments"
+				{
+					"team"
+					{
+						"type" "int"
+					}
+				}
+			}
+		}
+	}
+}
