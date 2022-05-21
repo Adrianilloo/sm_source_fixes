@@ -1,0 +1,37 @@
+"Games"
+{
+	"#default"
+	{
+		"Offsets"
+		{
+			"IsSpawnPointValid"
+			{
+				"windows"	"76"
+				"linux"		"77"
+			}
+		}
+
+		"Functions"
+		{
+			"IsSpawnPointValid"
+			{
+				"offset"	"IsSpawnPointValid"
+				"hooktype"	"gamerules"
+				"return"	"bool"
+
+				"arguments"
+				{
+					"spot"
+					{
+						"type" "cbaseentity"
+					}
+
+					"player"
+					{
+						"type" "cbaseentity"
+					}
+				}
+			}
+		}
+	}
+}
