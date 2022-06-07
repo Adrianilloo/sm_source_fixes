@@ -9,7 +9,7 @@ public Plugin myinfo =
 	name = "TestActivator Fix",
 	author = "AdRiAnIlloO",
 	description = "Fixes server crash when TestActivator input is called with an invalid activator",
-	version = "1.0"
+	version = "1.1"
 }
 
 #define OFFSET_NAME "AcceptInput"
@@ -28,11 +28,13 @@ public void OnPluginStart()
 	// Load offset from custom gamedata overrides first, if any
 	if (overrides != null)
 	{
-		for (FileType type; overrides.GetNext(path[len], sizeof(path) - len, type)
-			&& type == FileType_File && gAcceptInputHook == null;)
+		for (FileType type; gAcceptInputHook == null && overrides.GetNext(path[len], sizeof(path) - len, type);)
 		{
-			File_GetFileName(path[len], path[len], sizeof(path) - len);
-			gAcceptInputHook = LoadDHooksOffset(path[baseLen], OFFSET_NAME, false);
+			if (type == FileType_File)
+			{
+				File_GetFileName(path[len], path[len], sizeof(path) - len);
+				gAcceptInputHook = LoadDHooksOffset(path[baseLen], OFFSET_NAME, false);
+			}
 		}
 
 		delete overrides;
