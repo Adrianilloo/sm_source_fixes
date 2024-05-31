@@ -20,7 +20,7 @@ enum struct STeamChangeInfo {
 	int mNewTeamScore; // New team's previous score
 }
 
-bool gIsActive = true;
+bool gIsActive;
 DynamicHook gChangeTeamHook, gJoinTeamHook;
 ArrayList gTeamChangeInfo;
 
@@ -35,15 +35,14 @@ public void OnPluginStart()
 
 public void OnMapStart()
 {
-	if (!StartHandleLateLoad())
+	gIsActive = FindConVar("mp_teamplay").BoolValue;
+
+	if (StartHandleLateLoad() && gIsActive)
 	{
-		gIsActive = FindConVar("mp_teamplay").BoolValue;
-		return;
-	}
-	
-	LOOP_CLIENTS(i, CLIENTFILTER_ALL)
-	{
-		OnClientPutInServer(i);
+		LOOP_CLIENTS(i, CLIENTFILTER_ALL)
+		{
+			OnClientPutInServer(i);
+		}
 	}
 }
 
