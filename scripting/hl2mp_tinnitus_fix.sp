@@ -1,5 +1,4 @@
 #include "base"
-#include <sdkhooks>
 #include <smlib/clients>
 
 #pragma semicolon 1
@@ -13,8 +12,12 @@ public Plugin myinfo =
 	version = "1.0"
 }
 
+DynamicHook gExplosionDamageHook;
+
 public void OnPluginStart()
 {
+	gExplosionDamageHook = LoadDHooksOffset("dhooks.hl2mp_tinnitus_fix", "OnDamagedByExplosion");
+
 	if (StartHandleLateLoad())
 	{
 		LOOP_CLIENTS(i, CLIENTFILTER_NOBOTS)
@@ -28,13 +31,11 @@ public void OnClientPutInServer(int client)
 {
 	if (!IsFakeClient(client))
 	{
-		SDKHook(client, SDKHook_OnTakeDamage, OnClientTakeDamage);
+		gExplosionDamageHook.HookEntity(Hook_Pre, client, OnClientDamagedByExplosion);
 	}
 }
 
-Action OnClientTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damageType)
+MRESReturn OnClientDamagedByExplosion(DHookParam params)
 {
-	// Prevent explosion ringing noise, which could also stay in an infinite loop
-	damageType &= ~DMG_BLAST;
-	return Plugin_Changed;
+	return MRES_Supercede; // Prevent ear ringing sound, which may play infinitely (engine DSP bug)
 }
