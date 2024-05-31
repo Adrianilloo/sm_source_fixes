@@ -9,7 +9,7 @@ public Plugin myinfo =
 	name = "HL2MP Scores Fix",
 	author = "AdRiAnIlloO",
 	description = "Fixes Half-Life 2: Deathmatch team change scoring issues",
-	version = "1.0"
+	version = "1.1"
 }
 
 enum struct STeamChangeInfo {

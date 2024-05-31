@@ -9,7 +9,7 @@ public Plugin myinfo =
 	name = "HL2MP Tinnitus Fix",
 	author = "AdRiAnIlloO",
 	description = "Blocks Half-Life 2: Deathmatch explosions ringing noise",
-	version = "1.0"
+	version = "1.1"
 }
 
 DynamicHook gExplosionDamageHook;
