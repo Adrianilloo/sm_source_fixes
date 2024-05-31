@@ -1,4 +1,4 @@
-#include <smlib/teams>
+#include <smlib>
 
 #pragma semicolon 1
 #pragma newdecls  required
